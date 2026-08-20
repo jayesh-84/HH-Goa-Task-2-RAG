@@ -1,158 +1,693 @@
-# RAGInGoa – HH Goa 2026
+# 🎙️ RAGInGoa — Voice-Enabled Multilingual RAG System
 
-**RAGInGoa** is a production-ready, voice-enabled Retrieval-Augmented Generation (RAG) system built for the **Hacker House Goa 2026 Shortlisting Task 2**.
+<p align="center">
 
-The system translates spoken audio questions (in Hindi) using Sarvam AI, performs similarity searches on the official AI4Bharat MSMARCO-XI dataset validation split using a FAISS vector index, generates grounded answers using the Gemini API, filters them through input/output guardrails (for topic match, safety, and hallucination), and visualizes execution metrics on a responsive, dark-themed dashboard.
+  <strong>Ask. Retrieve. Ground.</strong>
+
+  <br><br>
+
+  A multilingual Voice-Enabled Retrieval-Augmented Generation (RAG)
+  system built for <strong>Hacker House Goa 2026 — Task 2</strong>.
+
+  <br><br>
+
+  <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" />
+  <img src="https://img.shields.io/badge/RAG-Retrieval%20Augmented%20Generation-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/FAISS-Vector%20Search-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Gemini-Grounded%20Generation-4285F4?style=for-the-badge&logo=google" />
+  <img src="https://img.shields.io/badge/Multilingual-Hindi%20%7C%20Hinglish-green?style=for-the-badge" />
+
+</p>
 
 ---
 
-## Architecture and Pipeline
+## 🌟 Overview
 
-The application is structured following clean architecture principles, separating the logic into decoupled, modular components:
+**RAGInGoa** is a voice-enabled multilingual Retrieval-Augmented Generation system designed to answer questions using information retrieved from a provided knowledge dataset.
 
+Instead of relying only on the language model's internal knowledge, the system first retrieves relevant context and then generates an answer grounded in that retrieved information.
+
+### Core Pipeline
+
+```text
+🎤 Voice Input
+      │
+      ▼
+🗣️ Speech-to-Text
+      │
+      ▼
+🧩 Query Processing
+      │
+      ▼
+🔢 Multilingual Embedding
+      │
+      ▼
+📦 FAISS Vector Retrieval
+      │
+      ▼
+🛡️ Guardrails
+      │
+      ▼
+🧠 Gemini Grounded Generation
+      │
+      ▼
+💬 Final Answer
 ```
-Voice Input 
-  → Browser Microphone Capture (MediaRecorder)
-  → Speech-to-Text (Sarvam API)
-  → Input Guardrails (Safety check)
-  → Domain Check (Topic validation)
-  → Vector Store Retrieval (FAISS indexing)
-  → Context Sufficiency Check (Similarity filter)
-  → Grounded Generation (Gemini 1.5 Flash)
-  → Output Guardrails (Grounding / Hallucination verification)
-  → Live Answer Display (Typewriter animation) + Speed Metrics (P50/P70/P100 dashboard)
+
+The system is designed to know **when to answer and when not to answer**.
+
+---
+
+# 🎯 Problem Statement
+
+The goal of Hacker House Goa Task 2 is to build a voice-enabled RAG system where:
+
+> A user speaks a question → the system transcribes it → retrieves relevant information → generates a grounded answer.
+
+The project uses the provided **AI4Bharat MSMARCO-XI** dataset as the knowledge source.
+
+---
+
+# ✨ Key Features
+
+### 🎤 Voice Input
+
+- Voice-based question input
+- Speech-to-text processing
+- Hindi voice interaction
+- Support for multilingual queries
+
+### 🌐 Multilingual RAG
+
+Supports queries such as:
+
+```text
+निगम क्या है?
+```
+
+and:
+
+```text
+corporation kya hai?
+```
+
+The system processes multilingual queries and retrieves relevant context.
+
+### 🔎 Semantic Retrieval
+
+The system converts text into vector embeddings and searches the FAISS index for the most relevant passages.
+
+### 🧠 Grounded Generation
+
+Gemini generates responses using retrieved context instead of answering purely from general model knowledge.
+
+### 🛡️ Guardrails
+
+The system includes checks for:
+
+- Unsafe queries
+- Off-topic queries
+- Insufficient context
+- Low-similarity retrieval results
+- Ungrounded answers
+
+If the required context is not available, the system refuses to fabricate an answer.
+
+Example:
+
+```text
+I cannot answer this question based on the provided dataset.
+```
+
+### 📊 Retrieval Information
+
+The system can track:
+
+- Retrieved passages
+- Similarity scores
+- Top-K retrieval
+- Grounding status
+- Safety status
+- Query processing information
+- Latency
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │     User Voice      │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Speech-to-Text    │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Query Processing  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Multilingual        │
+                    │ Embedding Model     │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    FAISS Index      │
+                    │  Vector Retrieval   │
+                    └──────────┬──────────┘
+                               │
+                         Top-K Context
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │     Guardrails      │
+                    │ Safety + Relevance  │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │ Gemini Generation   │
+                    │ Grounded Response   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    Final Answer     │
+                    └─────────────────────┘
 ```
 
 ---
 
-## Detailed Components
+# 🧩 Technology Stack
 
-### 1. Dataset Ingestion
-- **Dataset**: `ai4bharat/MSMARCO-XI` (Multilingual MS MARCO translated into Indic languages).
-- **Target Language**: Hindi (`hin_Deva` for validation / `hi-IN` for Speech-to-Text).
-- **Ingestion Pipeline**: Streams validation parquet splits, extracts translated passages and metadata (query_id, selection flag, query text, original English translation), and cleans text by removing spacing artifacts.
-
-### 2. Chunking Module
-Provides an abstract base interface (`BaseChunker`) supporting comparison between three strategies:
-- **Fixed-Size Chunking**: Character-based slicing with configurable size and overlap.
-- **Semantic-Aware Chunking**: Groups sentences based on cosine similarity of sentence embeddings generated by `sentence-transformers`. Chunks split when similarity drops below a threshold.
-- **Metadata-Aware Chunking**: Slices text into chunks, and prepends a structured metadata header enclosing the query context and language, enriching semantic embeddings for search.
-
-### 3. Embeddings & Vector Store
-- **Embedding Model**: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` (384 dimensions, 50+ languages, fast CPU execution).
-- **Vector Database**: FAISS (wrapped in `FAISSVectorStore` class).
-- **Indexing Strategy**: Computes cosine similarity via Inner Product (`IndexFlatIP`) on unit-normalized vector embeddings.
-- **Persistence**: Index (`index.faiss`) and metadata mapping (`metadata.pkl`) are serialized once to disk at `./data/faiss_index/` to guarantee fast retrieval and startup without rebuilding.
-
-### 4. LLM generation
-- **Model**: `gemini-1.5-flash` via the `google-generativeai` package.
-- **Grounded Prompting**: Strict system directives restrict answering only using the provided contexts. If the context is insufficient or empty, it outputs: *"I cannot answer this question based on the provided dataset."*
-
-### 5. Guardrails System
-- **Input Safety**: Regular expression scan against a toxic blacklist.
-- **Domain Check (Topic Match)**: Checks if the query aligns with the indexed dataset by inspecting the top matching FAISS similarity score (flagged if score < 0.30).
-- **Context Sufficiency**: Blocks generation if similarity scores of all retrieved passages are below 0.35.
-- **Grounding Validation (Hallucination)**: Re-queries Gemini (or executes normalized keyword subset alignment if offline) to ensure the answer contains no factual claims unsupported by the context. If validation fails, it regenerates the answer once before refusing.
-
-### 6. Speech-to-Text
-- **Provider**: Sarvam AI REST API (`https://api.sarvam.ai/speech-to-text`).
-- **Mode**: Transcribes voice file uploads using `saaras:v1` model for `hi-IN`.
-- **Fallback**: Gracefully falls back to mock voice queries if the API key is not present.
-
-### 7. Harness & Orchestrator
-- **Class**: `RAGOrchestrator` inside `backend/orchestrator/pipeline.py`.
-- **Function**: Coordinates the pipeline, records precise latencies at each stage (STT, Retrieval, LLM generation, Guardrails, E2E), and appends statistics to a JSONL log file (`data/query_logs.jsonl`).
+| Component | Technology |
+|---|---|
+| Language | Python |
+| Frontend | HTML, CSS, JavaScript |
+| Backend | Python |
+| Speech-to-Text | Sarvam / configured STT provider |
+| LLM | Google Gemini |
+| Embeddings | `paraphrase-multilingual-MiniLM-L12-v2` |
+| Vector Database | FAISS |
+| Dataset | AI4Bharat MSMARCO-XI |
+| API | REST |
+| Testing | Pytest |
+| Environment | Python `.env` configuration |
 
 ---
 
-## Latency and Analytics
+# 📂 Project Structure
 
-To meet the goal of **P50 under 200 ms**:
-- We preprocess and index the dataset to disk once, resolving queries in `< 50 ms` during similarity retrieval.
-- We lazily cache the embedding and Gemini models as singletons.
-- We compute P50, P70, and P100 latency percentiles by reading the local query logs.
-
----
-
-## Local Setup
-
-### Prerequisites
-- Python 3.10+ (Tested on Python 3.14)
-- Git (optional)
-
-### Installation
-1. Clone or download the repository into a workspace.
-2. Install dependencies:
-   ```bash
-   pip install sentence-transformers faiss-cpu datasets fastapi uvicorn python-dotenv requests pytest
-   pip install google-generativeai
-   ```
-
-3. Create your active environment configuration:
-   ```bash
-   copy .env.example .env
-   ```
-4. Insert your API credentials in `.env`:
-   ```env
-   SARVAM_API_KEY=your_sarvam_key_here
-   GEMINI_API_KEY=your_gemini_key_here
-   ```
-
-### Running the Application
-
-1. **Build the Index**:
-   Index the MSMARCO-XI Hindi validation subset (1,000 queries, ~11,400 chunks):
-   ```bash
-   python -m backend.main build
-   ```
-   *(Note: downloads model weights and dataset files on first run; subsequent runs are cached).*
-
-2. **Run Tests**:
-   Run our 20 unit tests verifying the entire pipeline:
-   ```bash
-   python -m pytest tests/
-   ```
-
-3. **Start the Web Application**:
-   Start the FastAPI server:
-   ```bash
-   python -m backend.main start
-   ```
-   Open `http://localhost:8000/` in your browser.
+```text
+HH-Goa-Task-2-RAG/
+│
+├── backend/
+│   ├── ...
+│   └── ...
+│
+├── frontend/
+│   ├── index.html
+│   ├── index.css
+│   └── index.js
+│
+├── data/
+│   ├── faiss_index/
+│   └── query_logs.jsonl
+│
+├── tests/
+│   ├── test_chunking.py
+│   ├── test_guardrails.py
+│   ├── test_ingestion.py
+│   ├── test_llm.py
+│   ├── test_orchestrator.py
+│   ├── test_retrieval.py
+│   ├── test_stt.py
+│   └── test_vector_store.py
+│
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ---
 
-## Premium Visual Design (Hacker House Goa 2026 Experience)
+# ⚙️ Configuration
 
-The frontend application has been customized to reflect a premium developer event held in a tropical environment:
-- **Color System**: Utilizes a deep jungle green background gradient (`#031C13` to `#052B1D`), highlighted by sunset gold (`#F4C542`) and hacker pink (`#FF2F7D`) borders, with clean cream (`#F7F1D0`) typography for optimal legibility.
-- **Background Layering**: Features a SVG-based noise grain overlay, a radial sunset pulse glow animation, a coordinate dotted grid, and corner palm leaf silhouettes.
-- **Telemetry Indicators**: Replaces traditional pills with gold-tinted event-style status badges (`SYS ACTIVE`, BCP-47 language settings, embedding model, and chunking strategies).
-- **Console Input Station**: Designed like an active hardware console, featuring a frosted circular glass microphone recorder button, dynamic ripple animations, and a flashing red `● LIVE` voice query indicator.
-- **Grounded Information Cards**: Highlights AI generated outputs with a gold-bordered container, soft green ambient backdrop shadows, and typing typewriter animations.
-- **Ocean Wave Dividers**: Frames the page bottom with a scrolling vector SVG wave pattern.
+Create a `.env` file from `.env.example`.
+
+```env
+SARVAM_API_KEY=your_sarvam_api_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
+
+DATASET_NAME=ai4bharat/MSMARCO-XI
+DATASET_SPLIT=validation
+DATASET_LANGUAGE=hin_Deva
+MAX_DATASET_ITEMS=1000
+
+EMBEDDING_MODEL_NAME=sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+
+FAISS_INDEX_PATH=./data/faiss_index
+
+CHUNKER_STRATEGY=fixed_size
+CHUNK_SIZE=500
+CHUNK_OVERLAP=50
+
+RETRIEVAL_TOP_K=3
+```
+
+> ⚠️ **Never commit `.env` or expose API keys.**
+>
+> Only `.env.example` should be included in the repository.
 
 ---
 
-## API Endpoints
+# 🚀 Installation
 
-- **`GET /api/config`**: Returns active language, chunker settings, and embedding models.
-- **`POST /api/rag`**: Receives either `query` (string) or `file` (audio upload) form data and runs the orchestrator pipeline.
-- **`POST /api/chunking/compare`**: Submits raw text and returns side-by-side splits for `fixed_size`, `semantic`, and `metadata` strategies.
-- **`GET /api/analytics`**: Calculates P50, P70, P100 latencies and fetches the last 10 query executions.
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/jayesh-84/HH-Goa-Task-2-RAG.git
+cd HH-Goa-Task-2-RAG
+```
+
+## 2. Create a virtual environment
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+## 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## 4. Configure environment variables
+
+```bash
+copy .env.example .env
+```
+
+Then add your API keys to `.env`.
 
 ---
 
-## Screenshots Placeholder
-*(Will be embedded after deploying frontend UI)*
+# ▶️ Running the Application
 
-## Live Demo Link Placeholder
-*(URL to be deployed)*
+## Start Backend
+
+```bash
+python -m backend.main start
+```
+
+Backend:
+
+```text
+http://127.0.0.1:8000
+```
+
+## Start Frontend
+
+Open another terminal:
+
+```bash
+python -m http.server 5500 --directory frontend
+```
+
+Frontend:
+
+```text
+http://localhost:5500
+```
+
+Open the frontend in your browser:
+
+```text
+http://localhost:5500
+```
 
 ---
 
-## Hacker House Goa 2026 Team Information
-- **Project**: RAGInGoa (Shortlisting Task 2)
-- **Developer**: Sarvadnya
-- **Co-pilot**: Antigravity (Google Deepmind AI)
-- **Hacker House Location**: Goa, India (2026)
+# 🧪 Example Queries
+
+### Hindi
+
+```text
+निगम क्या है?
+```
+
+### Hinglish
+
+```text
+corporation kya hai?
+```
+
+### English
+
+```text
+What is Broadcom Corporation?
+```
+
+### Out-of-domain query
+
+```text
+Who is the Prime Minister of India?
+```
+
+The system should reject questions that cannot be answered from the available dataset.
+
+---
+
+# 🛡️ Guardrail Strategy
+
+RAGInGoa uses multiple checks before returning an answer.
+
+```text
+User Query
+    │
+    ▼
+Safety Check
+    │
+    ├── Unsafe → Reject
+    │
+    ▼
+Retrieval
+    │
+    ▼
+Similarity Check
+    │
+    ├── Insufficient Context → Reject
+    │
+    ▼
+Context Sufficiency
+    │
+    ├── Insufficient → Grounded Refusal
+    │
+    ▼
+Gemini Generation
+    │
+    ▼
+Grounding Validation
+    │
+    ├── Failed → Reject / Regenerate
+    │
+    ▼
+Final Answer
+```
+
+This prevents the system from blindly generating answers when relevant evidence is unavailable.
+
+---
+
+# 📈 Retrieval
+
+The current system uses:
+
+```text
+Embedding Model:
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+```
+
+Vector search:
+
+```text
+FAISS
+```
+
+Current retrieval configuration:
+
+```text
+Top-K = 3
+Chunk Size = 500
+Chunk Overlap = 50
+```
+
+Retrieved passages are passed to the generation layer as grounding context.
+
+---
+
+# ⚡ Performance
+
+The system records pipeline latency and retrieval information for evaluation.
+
+During verification, the initial end-to-end query showed approximately:
+
+```text
+23.71 seconds
+```
+
+This initial measurement included lazy loading of the embedding model and model weights. Subsequent queries are expected to be faster after initialization.
+
+> Performance benchmarking should be measured across multiple queries rather than relying on a single best-case result.
+
+---
+
+# 🧪 Testing
+
+The repository contains automated tests covering major RAG components.
+
+```text
+tests/
+├── test_chunking.py
+├── test_guardrails.py
+├── test_ingestion.py
+├── test_llm.py
+├── test_orchestrator.py
+├── test_retrieval.py
+├── test_stt.py
+└── test_vector_store.py
+```
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+For coverage:
+
+```bash
+pytest --cov
+```
+
+---
+
+# 🔌 API
+
+The backend exposes REST endpoints for communication between the frontend and RAG pipeline.
+
+Example:
+
+```text
+GET /api/config
+POST /api/rag
+```
+
+The `/api/rag` endpoint handles the RAG query flow:
+
+```text
+Query
+  ↓
+Embedding
+  ↓
+FAISS Retrieval
+  ↓
+Guardrails
+  ↓
+Gemini
+  ↓
+Grounded Response
+```
+
+---
+
+# 🔐 Security
+
+API credentials are stored using environment variables.
+
+```text
+.env
+```
+
+is excluded from Git using:
+
+```gitignore
+.env
+```
+
+Never place API keys directly inside:
+
+- JavaScript
+- HTML
+- README
+- GitHub commits
+- Screenshots
+- Public configuration files
+
+---
+
+# 📸 Demo
+
+### RAG Lab
+
+The application provides a dedicated interface for:
+
+- Voice input
+- Speech transcription
+- Retrieved context
+- Grounded answers
+- Retrieval information
+- RAG system status
+
+### Example Flow
+
+```text
+🎤 Speak
+   ↓
+📝 Transcription
+   ↓
+🔎 Retrieve
+   ↓
+🛡️ Validate
+   ↓
+🧠 Generate
+   ↓
+💬 Grounded Answer
+```
+
+---
+
+# 🎥 Hackathon Submission
+
+### Project
+
+**RAGInGoa — Voice-Enabled Multilingual RAG System**
+
+### Event
+
+**Hacker House Goa 2026**
+
+### Task
+
+**Task 2 — Voice-Enabled RAG Model**
+
+### Repository
+
+https://github.com/jayesh-84/HH-Goa-Task-2-RAG
+
+### Live Demo
+
+> Add your deployed/live URL here.
+
+### Demo Video
+
+> Add your demo video link here.
+
+### Team/Process Video
+
+> Add your 90-second team/process video link here.
+
+---
+
+# 🎯 Design Principles
+
+RAGInGoa is built around four principles:
+
+### 1. Retrieve Before Generate
+
+The model should use retrieved evidence instead of relying only on parametric knowledge.
+
+### 2. Ground Every Answer
+
+Responses should be supported by retrieved context.
+
+### 3. Know When Not to Answer
+
+If the system cannot find sufficient evidence, it should refuse instead of hallucinating.
+
+### 4. Multilingual by Design
+
+The system is designed to handle multilingual and Hinglish queries.
+
+---
+
+# 🏆 Why RAGInGoa?
+
+Traditional LLM applications can confidently answer questions even when they do not have reliable information.
+
+RAGInGoa takes a different approach:
+
+```text
+                 Traditional LLM
+                       │
+                 User Question
+                       │
+                       ▼
+                 Model Answer
+                       │
+                 ❓ Hallucination Risk
+
+
+                    RAGInGoa
+                       │
+                 User Question
+                       │
+                       ▼
+                  Retrieval
+                       │
+                       ▼
+                Relevant Context
+                       │
+                       ▼
+                 Guardrails
+                       │
+                       ▼
+              Grounded Generation
+                       │
+                       ▼
+                Reliable Answer
+```
+
+---
+
+# 👨‍💻 Developer
+
+**Jayesh Patil**
+
+GitHub:  
+https://github.com/jayesh-84
+
+---
+
+# 📜 License
+
+This project was developed as part of the **Hacker House Goa 2026 Task 2** evaluation.
+
+---
+
+<p align="center">
+
+### 🎙️ RAGInGoa
+
+<strong>Ask. Retrieve. Ground.</strong>
+
+Built for Hacker House Goa 2026 🚀
+
+</p>
