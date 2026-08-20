@@ -1,29 +1,23 @@
 # 🎙️ RAGInGoa — Voice-Enabled Multilingual RAG System
 
 <p align="center">
-
   <strong>Ask. Retrieve. Ground.</strong>
+</p>
 
-  <br><br>
+A multilingual Voice-Enabled Retrieval-Augmented Generation (RAG) system built for **Hacker House Goa 2026 — Task 2**.
 
-  A multilingual Voice-Enabled Retrieval-Augmented Generation (RAG)
-  system built for <strong>Hacker House Goa 2026 — Task 2</strong>.
-
-  <br><br>
-
+<p align="center">
   <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" />
   <img src="https://img.shields.io/badge/RAG-Retrieval%20Augmented%20Generation-purple?style=for-the-badge" />
   <img src="https://img.shields.io/badge/FAISS-Vector%20Search-orange?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Gemini-Grounded%20Generation-4285F4?style=for-the-badge&logo=google" />
-  <img src="https://img.shields.io/badge/Multilingual-Hindi%20%7C%20Hinglish-green?style=for-the-badge" />
-
 </p>
 
 ---
 
 ## 🌟 Overview
 
-**RAGInGoa** is a voice-enabled multilingual Retrieval-Augmented Generation system designed to answer questions using information retrieved from a provided knowledge dataset.
+**RAGInGoa** is a multilingual voice-enabled Retrieval-Augmented Generation system that retrieves relevant context from a knowledge dataset before generating grounded answers.
 
 Instead of relying only on the language model's internal knowledge, the system first retrieves relevant context and then generates an answer grounded in that retrieved information.
 
