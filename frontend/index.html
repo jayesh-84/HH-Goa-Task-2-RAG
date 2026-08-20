@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAGInGoa – Hacker House Goa 2026</title>
+    <!-- Google Fonts for premium tech display & clean text: Cinzel, Syne, Space Mono, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- 1. Sophisticated visual background layering (sunset horizon gradients + sways) -->
+    <div class="cyber-noise"></div>
+    <div class="goa-dotted-grid"></div>
+    <div class="sunset-ambient-glow"></div>
+    <div class="stars-overlay"></div>
+
+    <!-- Swaying vector palm tree silhouettes -->
+    <div class="palm-silhouette leaf-1">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 100 C15 70, 30 50, 60 40" stroke="#003D2B" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M60 40 C55 35, 40 28, 20 30" stroke="#003D2B" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M60 40 C60 32, 52 20, 35 15" stroke="#003D2B" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M60 40 C65 34, 70 20, 55 5" stroke="#003D2B" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    </div>
+    
+    <div class="palm-silhouette leaf-2">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 100 C85 70, 70 50, 40 40" stroke="#003D2B" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M40 40 C45 35, 60 28, 80 30" stroke="#003D2B" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M40 40 C40 32, 48 20, 65 15" stroke="#003D2B" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M40 40 C35 34, 30 20, 45 5" stroke="#003D2B" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="app-header" id="sticky-header">
+        <div class="logo-container">
+            <span class="logo-mark">△</span>
+            <span class="logo-title">RAGInGoa</span>
+        </div>
+        <nav class="header-nav">
+            <a href="#rag-lab-anchor" class="nav-link">RAG LAB</a>
+            <a href="#chunking-sandbox-anchor" class="nav-link">CHUNKING</a>
+            <a href="#pipeline-flow-anchor" class="nav-link">ARCHITECTURE</a>
+            <a href="#latency-analytics-anchor" class="nav-link">ANALYTICS</a>
+        </nav>
+        <div class="header-status-credentials">
+            <span class="badge credential-badge active-sys">● SYSTEM ACTIVE</span>
+            <span class="badge credential-badge header-tag">HH GOA 2026</span>
+        </div>
+    </header>
+
+    <!-- 2. Full-Viewport Split-Hero Section (55% / 45%) -->
+    <section class="hero-section">
+        <div class="hero-split-container">
+            
+            <!-- Left Panel (55%): Event tags & CTA button scrolls -->
+            <div class="hero-left-panel">
+                <div class="hero-event-badge">
+                    <span class="emoji">🌴</span>
+                    <div class="details">
+                        <strong>HACKER HOUSE GOA 2026</strong>
+                        <span>TASK 02 · RAG SYSTEM</span>
+                    </div>
+                </div>
+
+                <h2 class="hero-brand-title">RAGInGoa</h2>
+                <h3 class="hero-tagline-title">Ask. Retrieve. Ground.</h3>
+                
+                <p class="hero-description">
+                    A multilingual Retrieval-Augmented Generation laboratory built for Hacker House Goa 2026.
+                </p>
+
+                <div class="hero-actions-container">
+                    <a href="#rag-lab-anchor" class="cta-btn fill-gold">⚡ ENTER RAG LAB</a>
+                    <a href="#pipeline-flow-anchor" class="cta-btn stroke-cream">VIEW ARCHITECTURE</a>
+                </div>
+
+                <div class="hero-metadata-row">
+                    <span class="meta-tag">11,401 VECTORS</span>
+                    <span class="meta-dot"></span>
+                    <span class="meta-tag">HINDI / ENGLISH</span>
+                    <span class="meta-dot"></span>
+                    <span class="meta-tag">FAISS</span>
+                    <span class="meta-dot"></span>
+                    <span class="meta-tag">GROUNDED GENERATION</span>
+                </div>
+            </div>
+
+            <!-- Right Panel (45%): Floating Glass RAG Engine diagram -->
+            <div class="hero-right-panel">
+                <!-- Floating sunset horizon element behind panel -->
+                <div class="hero-sunset-glowing-sun"></div>
+                
+                <div class="floating-rag-engine-card">
+                    <div class="card-border-tag">[ RAG ENGINE ]</div>
+                    
+                    <div class="engine-nodes-list">
+                        <div class="node-item active-node">
+                            <span class="indicator">●</span>
+                            <span class="lbl">USER QUERY</span>
+                        </div>
+                        <div class="node-connecting-line animated-line"></div>
+                        <div class="node-item">
+                            <span class="indicator">●</span>
+                            <span class="lbl">EMBEDDING</span>
+                        </div>
+                        <div class="node-connecting-line"></div>
+                        <div class="node-item">
+                            <span class="indicator">●</span>
+                            <span class="lbl">FAISS</span>
+                        </div>
+                        <div class="node-connecting-line"></div>
+                        <div class="node-item">
+                            <span class="indicator">●</span>
+                            <span class="lbl">TOP-K RETRIEVAL</span>
+                        </div>
+                        <div class="node-connecting-line"></div>
+                        <div class="node-item">
+                            <span class="indicator">●</span>
+                            <span class="lbl">GROUNDED ANSWER</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 3. Horizontal Statistics Strip -->
+    <section class="stats-strip-bar">
+        <div class="stats-bar-wrapper">
+            <div class="stat-card">
+                <h3>11,401</h3>
+                <span class="lbl">VECTORS</span>
+            </div>
+            <div class="stat-card">
+                <h3>9,988</h3>
+                <span class="lbl">RAW DOCUMENTS</span>
+            </div>
+            <div class="stat-card">
+                <h3><span id="results-count-stats">3</span></h3>
+                <span class="lbl">RETRIEVED DOCS</span>
+            </div>
+            <div class="stat-card">
+                <h3>&lt;200ms</h3>
+                <span class="lbl">TARGET LATENCY</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Area -->
+    <main class="app-main">
+
+        <!-- 4. RAG Lab Workspace -->
+        <section id="rag-lab-anchor" class="major-section-wrapper">
+            <div class="section-chapter-header">
+                <h2>01 / RAG LAB</h2>
+                <span>Ask the knowledge base.</span>
+                <p>Query the indexed knowledge base using Hindi voice or text and inspect the evidence behind every answer.</p>
+            </div>
+
+            <!-- Premium glass showcase workspace -->
+            <div class="cyber-card command-center-workspace">
+                <div class="workspace-brand-header">
+                    <span>🌴 HH GOA 2026 · RAG LAB</span>
+                    <span>LIVE KNOWLEDGE RETRIEVAL SYSTEM</span>
+                </div>
+
+                <div class="dashboard-2col-layout">
+                    <!-- Left Panel: Input Console -->
+                    <div class="query-console-card">
+                        <div class="console-section-header">
+                            <h3>QUERY CONSOLE</h3>
+                            <span class="badge credential-badge success-glow">● SYSTEM READY</span>
+                        </div>
+
+                        <!-- Circular Microphone button -->
+                        <div class="voice-input-card">
+                            <div class="mic-visual-wrapper">
+                                <button id="mic-btn" class="mic-button" aria-label="Start Voice Recording">
+                                    <div class="mic-glass-inner"></div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mic-icon">
+                                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                        <line x1="12" x2="12" y1="19" y2="22"/>
+                                    </svg>
+                                    <div class="pulse-ring ring-1"></div>
+                                    <div class="pulse-ring ring-2"></div>
+                                </button>
+                                <div class="mic-labels">
+                                    <span id="live-indicator" class="live-rec-text hidden">● LIVE</span>
+                                    <span class="action-lbl">TAP TO SPEAK</span>
+                                    <span id="recording-state-text" class="sub-lbl">Hindi Voice Input</span>
+                                </div>
+                            </div>
+
+                            <!-- STT Transcription display block -->
+                            <div id="stt-container" class="stt-container hidden">
+                                <label class="section-label">Speech-to-Text Transcript</label>
+                                <p id="stt-transcript" class="transcript-text">Transcribed speech will appear here...</p>
+                            </div>
+                        </div>
+
+                        <div class="console-divider"><span>OR</span></div>
+
+                        <!-- Custom text inputs -->
+                        <div class="text-input-card">
+                            <label class="console-label-title" for="query-input">TEXT QUERY</label>
+                            <div class="text-input-field-wrapper">
+                                <input type="text" id="query-input" placeholder="Ask something in Hindi or English..." autocomplete="off">
+                                <button id="submit-btn" class="cyber-btn select-action-btn">⚡ RETRIEVE ANSWER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Grounded outputs -->
+                    <div class="grounded-output-card">
+                        
+                        <!-- Visual Connection timeline progress -->
+                        <div id="pipeline-visual-connection" class="pipeline-progress-timeline">
+                            <div class="timeline-step query" id="step-query">
+                                <span class="dot">●</span>
+                                <span class="lbl">QUERY</span>
+                            </div>
+                            <div class="timeline-line" id="line-1"></div>
+                            <div class="timeline-step retrieve" id="step-retrieve">
+                                <span class="dot">●</span>
+                                <span class="lbl">RETRIEVE</span>
+                            </div>
+                            <div class="timeline-line" id="line-2"></div>
+                            <div class="timeline-step ground" id="step-ground">
+                                <span class="dot">●</span>
+                                <span class="lbl">GROUND</span>
+                            </div>
+                            <div class="timeline-line" id="line-3"></div>
+                            <div class="timeline-step answer" id="step-answer">
+                                <span class="dot">●</span>
+                                <span class="lbl">ANSWER</span>
+                            </div>
+                        </div>
+
+                        <!-- Answer panel -->
+                        <div class="answer-glass-card">
+                            <div class="answer-header-row">
+                                <h3>GROUNDED ANSWER</h3>
+                                <span id="guardrail-badge" class="badge credential-badge success-glow">● GROUNDED AI ANSWER</span>
+                            </div>
+                            <div class="answer-body-block">
+                                <p class="lbl-visual">AI RESPONSE</p>
+                                <p id="final-answer" class="answer-text">Submit a query from the console to initiate knowledge extraction...</p>
+                                <span id="typing-cursor" class="typing-cursor hidden">_</span>
+                            </div>
+                            <div class="answer-stamp-label">ANSWER GENERATED FROM RETRIEVED CONTEXT</div>
+                        </div>
+
+                        <!-- Telemetry timing values -->
+                        <div class="performance-telemetry-panel">
+                            <div class="telemetry-item">
+                                <span class="lbl">E2E LATENCY</span>
+                                <span class="val"><strong id="latency-e2e">0.00</strong> ms</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="lbl">RETRIEVAL</span>
+                                <span class="val"><strong id="latency-ret">0.00</strong> ms</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="lbl">DOCUMENTS</span>
+                                <span class="val"><strong id="results-count">0</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Retrieved Evidence Section -->
+                <div class="evidence-expansion-block">
+                    <div class="evidence-header">
+                        <h3>📚 RETRIEVED EVIDENCE</h3>
+                        <span class="sub-lbl">Context used to generate this answer.</span>
+                    </div>
+                    <div id="retrieved-passages-list" class="passages-container">
+                        <div class="empty-passages">No evidence records loaded yet.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Pipeline Flowchart Section -->
+        <section id="pipeline-flow-anchor" class="major-section-wrapper">
+            <div class="section-chapter-header">
+                <h2>HOW RAGInGoa WORKS</h2>
+                <span>Architecture and Execution Sequence</span>
+            </div>
+            
+            <div class="pipeline-grid">
+                <!-- Node 1 -->
+                <div class="pipeline-card">
+                    <div class="node-meta-num">01</div>
+                    <div class="node-icon">🎙️</div>
+                    <h4>QUERY</h4>
+                    <p>Captures spoken Hindi streams or English keyboard queries.</p>
+                </div>
+                <div class="pipeline-connector-arrow"></div>
+                <!-- Node 2 -->
+                <div class="pipeline-card">
+                    <div class="node-meta-num">02</div>
+                    <div class="node-icon">⚙️</div>
+                    <h4>INGESTION</h4>
+                    <p>Filters and normalizes parsed dataset splits.</p>
+                </div>
+                <div class="pipeline-connector-arrow"></div>
+                <!-- Node 3 -->
+                <div class="pipeline-card">
+                    <div class="node-meta-num">03</div>
+                    <div class="node-icon">✂️</div>
+                    <h4>CHUNKING</h4>
+                    <p>Applies character-fixed, semantic, or metadata partitions.</p>
+                </div>
+                <div class="pipeline-connector-arrow"></div>
+                <!-- Node 4 -->
+                <div class="pipeline-card">
+                    <div class="node-meta-num">04</div>
+                    <div class="node-icon">🧠</div>
+                    <h4>EMBEDDING</h4>
+                    <p>Generates dense vector weights using MiniLM-L12 model.</p>
+                </div>
+                <div class="pipeline-connector-arrow"></div>
+                <!-- Node 5 -->
+                <div class="pipeline-card">
+                    <div class="node-meta-num">05</div>
+                    <div class="node-icon">🔎</div>
+                    <h4>FAISS RETRIEVAL</h4>
+                    <p>Resolves similarity score matches in under 50 ms.</p>
+                </div>
+                <div class="pipeline-connector-arrow"></div>
+                <!-- Node 6 -->
+                <div class="pipeline-card">
+                    <div class="node-meta-num">06</div>
+                    <div class="node-icon">🤖</div>
+                    <h4>GENERATION</h4>
+                    <p>Formats Gemini prompt templates and applies guardrails.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Chunking Sandbox / Lab -->
+        <section id="chunking-sandbox-anchor" class="major-section-wrapper">
+            <div class="section-chapter-header">
+                <h2>02 / CHUNKING SANDBOX</h2>
+                <span>See how chunking strategies shape retrieval quality.</span>
+            </div>
+
+            <!-- Premium Laboratory Control Panel -->
+            <div class="cyber-card chunking-sandbox-workspace">
+                <div class="sandbox-2col-layout">
+                    <!-- Left Parameters Console -->
+                    <div class="sandbox-params-console">
+                        <div class="param-header-label">SOURCE DOCUMENT</div>
+                        <textarea id="sandbox-text" placeholder="Paste source text here to compare partition boundary splits..."></textarea>
+                        
+                        <div class="sliders-deck">
+                            <div class="slider-group">
+                                <label class="slider-label" for="param-chunk-size">CHUNK SIZE: <span id="val-chunk-size">500</span> chars</label>
+                                <input type="range" id="param-chunk-size" min="100" max="1000" step="50" value="500">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label" for="param-chunk-overlap">OVERLAP: <span id="val-chunk-overlap">50</span> chars</label>
+                                <input type="range" id="param-chunk-overlap" min="0" max="200" step="10" value="50">
+                            </div>
+                            <div class="slider-group">
+                                <label class="slider-label" for="param-similarity-threshold">SEMANTIC SIMILARITY: <span id="val-similarity">0.5</span></label>
+                                <input type="range" id="param-similarity-threshold" min="0.1" max="0.9" step="0.05" value="0.5">
+                            </div>
+                        </div>
+                        
+                        <button id="compare-chunks-btn" class="cyber-btn compare-execute-btn">⚡ RUN COMPARISON</button>
+                    </div>
+
+                    <!-- Right Strategy Result Columns -->
+                    <div class="sandbox-results-deck">
+                        <!-- Fixed Column -->
+                        <div class="cyber-card strategy-card-visual fixed-size-card">
+                            <div class="card-header-bar">
+                                <h4>FIXED SIZE</h4>
+                                <span id="count-fixed" class="badge credential-badge">0 CHUNKS</span>
+                            </div>
+                            <div class="visual-preview-blocks">
+                                <span>SOURCE TEXT</span>
+                                <div class="preview-text-block">████████████████</div>
+                                <span>SPLIT PREVIEW</span>
+                                <div class="preview-text-block split-fixed">██████ | ██████ | ██████</div>
+                            </div>
+                            <div id="col-fixed-list" class="chunk-list">
+                                <div class="empty-list-placeholder">Run comparison to compare splits.</div>
+                            </div>
+                        </div>
+
+                        <!-- Semantic Column -->
+                        <div class="cyber-card strategy-card-visual semantic-card">
+                            <div class="card-header-bar">
+                                <h4>SEMANTIC</h4>
+                                <span id="count-semantic" class="badge credential-badge">0 CHUNKS</span>
+                            </div>
+                            <div class="visual-preview-blocks">
+                                <span>SOURCE TEXT</span>
+                                <div class="preview-text-block">████████████████</div>
+                                <span>SPLIT PREVIEW</span>
+                                <div class="preview-text-block split-semantic">████████ | ██████████</div>
+                            </div>
+                            <div id="col-semantic-list" class="chunk-list">
+                                <div class="empty-list-placeholder">Run comparison to compare splits.</div>
+                            </div>
+                        </div>
+
+                        <!-- Metadata Column -->
+                        <div class="cyber-card strategy-card-visual metadata-card">
+                            <div class="card-header-bar">
+                                <h4>METADATA</h4>
+                                <span id="count-metadata" class="badge credential-badge">0 CHUNKS</span>
+                            </div>
+                            <div class="visual-preview-blocks">
+                                <span>SOURCE TEXT</span>
+                                <div class="preview-text-block">████████████████</div>
+                                <span>SPLIT PREVIEW</span>
+                                <div class="preview-text-block split-metadata">[QUERY] █████████</div>
+                            </div>
+                            <div id="col-metadata-list" class="chunk-list">
+                                <div class="empty-list-placeholder">Run comparison to compare splits.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Latency Analytics Observability Dashboard -->
+        <section id="latency-analytics-anchor" class="major-section-wrapper">
+            <div class="section-chapter-header">
+                <h2>03 / LATENCY ANALYTICS</h2>
+                <span>Real-time pipeline performance tracking and metrics analyzer.</span>
+            </div>
+
+            <!-- Observability dashboard panel -->
+            <div class="cyber-card analytics-workspace-panel">
+                <div class="workspace-brand-header">
+                    <span>⚡ PERFORMANCE OBSERVABILITY BOARD</span>
+                    <span id="total-queries-badge" class="badge credential-badge">0 QUERIES TOTAL</span>
+                </div>
+
+                <div class="analytics-split-layout">
+                    <!-- Left metrics list -->
+                    <div class="metrics-observability-grid">
+                        <div class="metric-card-box p50">
+                            <span class="title">P50 LATENCY</span>
+                            <h3 id="metric-p50">0.00 ms</h3>
+                            <p class="desc">RETRIEVED PERFORMANCE</p>
+                        </div>
+                        <div class="metric-card-box p70">
+                            <span class="title">P70 LATENCY</span>
+                            <h3 id="metric-p70">0.00 ms</h3>
+                            <p class="desc">MODEL PERFORMANCE</p>
+                        </div>
+                        <div class="metric-card-box p100">
+                            <span class="title">E2E LATENCY</span>
+                            <h3 id="metric-p100">0.00 ms</h3>
+                            <p class="desc">E2E PERFORMANCE</p>
+                        </div>
+                        <div class="metric-card-box avg">
+                            <span class="title">AVERAGE LATENCY</span>
+                            <h3 id="metric-avg">0.00 ms</h3>
+                            <p class="desc">LOOP CYCLE MEAN</p>
+                        </div>
+                    </div>
+
+                    <!-- Right progress metrics charts -->
+                    <div class="charts-observability-card">
+                        <div class="chart-header-bar">
+                            <h4>RAG PERFORMANCE BREAKDOWN (P50)</h4>
+                        </div>
+                        
+                        <div class="progress-bar-group-list">
+                            <!-- STT -->
+                            <div class="timing-bar-item">
+                                <div class="labels">
+                                    <span>Speech-to-Text Transcription</span>
+                                    <strong id="time-stt-label">0.00 ms</strong>
+                                </div>
+                                <div class="progress-track">
+                                    <div id="time-stt-bar" class="progress-fill stt" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Retrieval -->
+                            <div class="timing-bar-item">
+                                <div class="labels">
+                                    <span>Vector Database Search (FAISS)</span>
+                                    <strong id="time-ret-label">0.00 ms</strong>
+                                </div>
+                                <div class="progress-track">
+                                    <div id="time-ret-bar" class="progress-fill retrieval" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Generation -->
+                            <div class="timing-bar-item">
+                                <div class="labels">
+                                    <span>Grounded Generation (Gemini 1.5 Flash)</span>
+                                    <strong id="time-gen-label">0.00 ms</strong>
+                                </div>
+                                <div class="progress-track">
+                                    <div id="time-gen-bar" class="progress-fill generation" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Guardrails -->
+                            <div class="timing-bar-item">
+                                <div class="labels">
+                                    <span>Guardrail Validation Checks</span>
+                                    <strong id="time-guard-label">0.00 ms</strong>
+                                </div>
+                                <div class="progress-track">
+                                    <div id="time-guard-bar" class="progress-fill guard" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent executions logs -->
+                <div class="historical-telemetry-executions-card">
+                    <div class="card-header-bar">
+                        <h4>Historical Executions logs</h4>
+                        <button id="refresh-analytics-btn" class="cyber-btn small-btn">Refresh Logs</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="logs-table">
+                            <thead>
+                                <tr>
+                                    <th>Query</th>
+                                    <th>E2E Latency</th>
+                                    <th>STT</th>
+                                    <th>Retrieval</th>
+                                    <th>LLM</th>
+                                    <th>Guardrails</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logs-tbody">
+                                <tr>
+                                    <td colspan="7" class="empty-table-placeholder">No pipeline executions logged yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Ocean Wave separator -->
+    <div class="ocean-divider-line">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V120H0V95.8C59.71 88.45 119.06 77 178 68c62.62-9.61 123.68-15.96 143.39-11.56z" fill="#005C3B" opacity="0.3"></path>
+            <path d="M0 120h1200V80.39c-60 10.61-120.16 30-178 41.74-82.39 16.72-168.19 17.73-250.45.39C691.34 103 608.34 62 529.34 41.17c-70.05-18.48-146.53-26.09-214.34-3C252.38 49 192.38 60.39 178 63c-14.38 2.61-78.38 12.61-178 0z" fill="#003D2B" opacity="0.8"></path>
+        </svg>
+    </div>
+
+    <!-- Redesigned Footer Section -->
+    <footer class="app-footer">
+        <div class="footer-palm-decor"></div>
+        <div class="footer-grid-container">
+            <div class="footer-logo-panel">
+                <h2>RAGInGoa</h2>
+                <p class="tagline">"Built for the builder community."</p>
+                <div class="footer-event-badges">
+                    <span>HACKER HOUSE GOA 2026</span>
+                    <span>TASK 02</span>
+                </div>
+            </div>
+
+            <div class="footer-dev-panel">
+                <span class="label-title">DEVELOPER</span>
+                <h4 class="dev-name">Jayesh Patil</h4>
+                <p class="dev-degree">B.Tech Computer Science (Artificial Intelligence)</p>
+                <p class="dev-institution">Parul University, Vadodara, Gujarat</p>
+                
+                <div class="dev-socials">
+                    <a href="https://github.com" target="_blank" class="social-link">GitHub</a>
+                    <span class="divider-dot">·</span>
+                    <a href="https://linkedin.com" target="_blank" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="footer-hashtags-panel">
+                <span>#FrameInGoa</span>
+                <span>#HHGoa2026</span>
+                <span>#BuildInGoa</span>
+                <p class="made-love-tag">♥ Made with curiosity in Goa</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
